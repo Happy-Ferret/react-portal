@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/dist/react-portal.js"></script>
+    <script>
+      var portalState = ReactPortal.PortalState.sampleState();
+      var portal = ReactPortal.PortalFactory.build({
+        container: '#app',
+        portalState: portalState,
+        onChange: function(state) {
+          console.log('new portal', state);
+          portalState = state;
+        },
+        widgetsCatalog: {},
+      });
+      setTimeout(function() {
+        console.log('admin', portal.getAdmin());
+        console.log('page', portal.getPage());
+        console.log('state', portal.getPortalState());
+      }, 500);
+    </script>
+  </body>
+</html>

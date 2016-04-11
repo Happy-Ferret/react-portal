@@ -1,0 +1,50 @@
+{
+  "name": "react-portal",
+  "version": "1.0.0",
+  "description": "A simple API to create app portals",
+  "main": "lib/main.js",
+  "jsnext:main": "src/main.js",
+  "scripts": {
+    "lint": "eslint src tests",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register tests/index.js",
+    "test:watch": "npm test -- --watch",
+    "test:covtext": "rm -rf ./coverage && NODE_ENV=test babel-node $(npm bin)/isparta cover --report text $(npm bin)/_mocha -- --compilers js:babel-core/register tests/index.js",
+    "test:cov": "rm -rf ./coverage && NODE_ENV=test babel-node $(npm bin)/isparta cover --report html $(npm bin)/_mocha -- --compilers js:babel-core/register tests/index.js",
+    "start": "NODE_ENV=dev webpack-dev-server -d --colors --hot --inline --progress --port 8080",
+    "bundle": "NODE_ENV=production webpack -p --colors --progress",
+    "lib": "rm -rf ./lib && babel src --out-dir lib",
+    "build": "npm run test && npm run test:covtext && npm run lint && npm run lib && npm run bundle"
+  },
+  "author": "Mathieu ANCELIN",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.7.4",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "redux-thunk": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.7.5",
+    "babel-core": "^6.7.6",
+    "babel-eslint": "^6.0.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
+    "isparta": "^4.0.0",
+    "jsdom": "^8.3.1",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^15.0.1",
+    "redux-devtools": "^3.2.0",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.9",
+    "webpack": "^1.12.15",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
