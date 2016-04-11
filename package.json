@@ -1,7 +1,7 @@
 {
   "name": "react-portal",
   "version": "1.0.0",
-  "description": "A simple API to create app portals",
+  "description": "A library to create fully customizable and stylable app. portals in React or Vanilla JS, powered by an immutable model",
   "main": "lib/main.js",
   "jsnext:main": "src/main.js",
   "scripts": {
