@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 
-export const InternalWidgetBody = connect()(React.createClass({
+export const InternalWidgetBody = React.createClass({
   propTypes: {
     children: PropTypes.any,
     className: PropTypes.string,
@@ -17,4 +16,4 @@ export const InternalWidgetBody = connect()(React.createClass({
       </WidgetBody>
     );
   },
-}));
+});

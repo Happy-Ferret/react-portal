@@ -18,10 +18,13 @@
   "author": "Mathieu ANCELIN",
   "license": "MIT",
   "dependencies": {
-    "babel-polyfill": "^6.7.4",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "redux-thunk": "^2.0.1"
+    "es6-shim": "^0.35.0",
+    "es7-shim": "^5.0.0",
+    "immutable": "^3.7.6"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -41,9 +44,6 @@
     "jsdom": "^8.3.1",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.1",
-    "redux-devtools": "^3.2.0",
-    "redux-devtools-dock-monitor": "^1.1.1",
-    "redux-devtools-log-monitor": "^1.0.9",
     "webpack": "^1.12.15",
     "webpack-dev-server": "^1.14.1"
   }

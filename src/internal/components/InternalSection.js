@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 
-export const InternalSection = connect()(React.createClass({
+export const InternalSection = React.createClass({
   propTypes: {
     addWidget: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.element),
@@ -26,4 +25,4 @@ export const InternalSection = connect()(React.createClass({
       </Section>
     );
   },
-}));
+});

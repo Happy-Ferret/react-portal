@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 
 import { InternalWidgetBar } from './InternalWidgetBar';
 import { InternalWidgetBarButtons } from './InternalWidgetBarButtons';
@@ -12,7 +11,7 @@ import { InternalWidgetBody } from './InternalWidgetBody';
 
 import { maybeClassName, maybeStyle } from '../../utils';
 
-export const InternalWidgetContainer = connect()(React.createClass({
+export const InternalWidgetContainer = React.createClass({
   propTypes: {
     className: PropTypes.string,
     children: PropTypes.element,
@@ -108,4 +107,4 @@ export const InternalWidgetContainer = connect()(React.createClass({
       </WidgetContainer>
     );
   },
-}));
+});

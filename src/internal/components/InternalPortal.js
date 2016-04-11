@@ -1,12 +1,5 @@
 import React, { PropTypes } from 'react';
 
-import thunk from 'redux-thunk';
-import { reducer } from '../reducers';
-import { Devtools } from './devtools';
-import { Provider } from 'react-redux';
-
-import { createStore, applyMiddleware, compose } from 'redux';
-
 import { InternalSectionLayout } from './InternalSectionLayout';
 import { InternalSection } from './InternalSection';
 import { InternalWidgetContainer } from './InternalWidgetContainer';
@@ -148,8 +141,6 @@ export const InternalPortal = React.createClass({
       }
     }
   },
-  // TODO : needed ?
-  store: compose(applyMiddleware(thunk), Devtools.instrument())(createStore)(reducer),
   render() {
     // TODO protect
     const page = this.props.portalState.pages.filter(p => p.position === this.props.page)[0];
@@ -157,55 +148,52 @@ export const InternalPortal = React.createClass({
     const components = { ...defaultComponents, ...this.props.components };
     // TODO addSection button this.addSection.bind(this, page);
     return (
-      <Provider store={this.store}>
-        <div
-          className={maybeClassName(style, 'Portal')}
-          style={maybeStyle(style, 'Portal')}>
-          <InternalSectionLayout
-            className={maybeClassName(style, 'SectionLayout')}
-            style={maybeStyle(style, 'SectionLayout')}
-            SectionLayout={components.SectionLayout}>
-            {
-              page.sections.map(section =>
-                <InternalSection
-                  key={section.id}
-                  id={section.id}
-                  position={section.position}
-                  className={maybeClassName(style, 'Section')}
-                  style={maybeStyle(style, 'Section')}
-                  removeSection={this.removeSection.bind(this, section)}
-                  addWidget={this.addWidget.bind(this, section)}
-                  Section={components.Section}>
-                  {
-                    section.widgets.map(widget => {
-                      const modeView = isString(widget.widget) ? widget.widget : widget.widget.view;
-                      const modeEdit = isString(widget.widget) ? widget.widget : widget.widget.edit;
-                      const WidgetViewComponent =
-                        this.props.widgetsCatalog[modeView] || VoidWidget;
-                      const WidgetEditComponent =
-                        this.props.widgetsCatalog[modeEdit] || VoidWidget;
-                      return (
-                        <InternalWidgetContainer
-                          {...widget}
-                          key={widget.id}
-                          className={maybeClassName(style, 'WidgetContainer')}
-                          components={components}
-                          style={maybeStyle(style, 'WidgetContainer')}
-                          globalStyle={style}
-                          removeWidget={this.removeWidget.bind(this, widget)}
-                          WidgetEditComponent={WidgetEditComponent}
-                          WidgetViewComponent={WidgetViewComponent}
-                          Widget={components.Widget} />
-                      );
-                    })
-                  }
-                </InternalSection>
-              )
-            }
-          </InternalSectionLayout>
-          <Devtools />
-        </div>
-      </Provider>
+      <div
+        className={maybeClassName(style, 'Portal')}
+        style={maybeStyle(style, 'Portal')}>
+        <InternalSectionLayout
+          className={maybeClassName(style, 'SectionLayout')}
+          style={maybeStyle(style, 'SectionLayout')}
+          SectionLayout={components.SectionLayout}>
+          {
+            page.sections.map(section =>
+              <InternalSection
+                key={section.id}
+                id={section.id}
+                position={section.position}
+                className={maybeClassName(style, 'Section')}
+                style={maybeStyle(style, 'Section')}
+                removeSection={this.removeSection.bind(this, section)}
+                addWidget={this.addWidget.bind(this, section)}
+                Section={components.Section}>
+                {
+                  section.widgets.map(widget => {
+                    const modeView = isString(widget.widget) ? widget.widget : widget.widget.view;
+                    const modeEdit = isString(widget.widget) ? widget.widget : widget.widget.edit;
+                    const WidgetViewComponent =
+                      this.props.widgetsCatalog[modeView] || VoidWidget;
+                    const WidgetEditComponent =
+                      this.props.widgetsCatalog[modeEdit] || VoidWidget;
+                    return (
+                      <InternalWidgetContainer
+                        {...widget}
+                        key={widget.id}
+                        className={maybeClassName(style, 'WidgetContainer')}
+                        components={components}
+                        style={maybeStyle(style, 'WidgetContainer')}
+                        globalStyle={style}
+                        removeWidget={this.removeWidget.bind(this, widget)}
+                        WidgetEditComponent={WidgetEditComponent}
+                        WidgetViewComponent={WidgetViewComponent}
+                        Widget={components.Widget} />
+                    );
+                  })
+                }
+              </InternalSection>
+            )
+          }
+        </InternalSectionLayout>
+      </div>
     );
   },
 });

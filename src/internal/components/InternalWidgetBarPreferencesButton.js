@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 
-export const InternalWidgetBarPreferencesButton = connect()(React.createClass({
+export const InternalWidgetBarPreferencesButton = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
@@ -21,4 +20,4 @@ export const InternalWidgetBarPreferencesButton = connect()(React.createClass({
       </WidgetBarPreferencesButton>
     );
   },
-}));
+});
