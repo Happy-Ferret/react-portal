@@ -2,6 +2,9 @@ import { uuid } from '../../utils';
 import { PortalState as InternalPortalState } from '../../internal/model/PortalState';
 
 export const PortalState = {
+  fromJson(json) {
+    return InternalPortalState.fromJson(json);
+  },
   empty() {
     const pageUUID = uuid();
     return InternalPortalState.fromJson({
