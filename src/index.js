@@ -14,9 +14,9 @@ export * from './api/components/WidgetBarMoveButton';
 export * from './api/components/WidgetBarCloseButton';
 export * from './api/components/WidgetBody';
 
-export * from './api/state/portalState';
+export * from './api/state/PortalState';
 
-export * from './api/wrappers/portal';
+export * from './api/wrappers/PortalWrapper';
 
 export * from './api/Portal';
 export * from './api/Widget';

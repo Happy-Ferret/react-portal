@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Portal } from '../Portal';
-import { PortalState } from '../state/portalState';
+import { PortalState } from '../state/PortalState';
 import { eventBus } from '../../utils';
 
 const WrappedPortal = React.createClass({
