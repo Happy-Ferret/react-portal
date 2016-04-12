@@ -7,6 +7,11 @@ export class Widget extends React.Component {
   constructor(props) {
     super(props);
   }
+  renderEdit() {
+    return (
+      <div></div>
+    );
+  }
   render(...args) {
     if (this.props.mode === 'view') {
       return this.renderView(...args);
@@ -31,11 +36,37 @@ export class DOMWidget extends React.Component {
       this.init.bind(this)(props);
     }
   }
+  componentWillMount() {
+    if (this.widgetWillMount) {
+      this.widgetWillMount();
+    }
+  }
   componentDidMount() {
     this.externalRender();
+    if (this.widgetDidMount) {
+      this.widgetDidMount();
+    }
   }
-  componentDidUpdate() {
+  componentWillReceiveProps(nextProps) {
+    if (this.widgetWillReceiveProps) {
+      this.widgetWillReceiveProps(nextProps);
+    }
+  }
+  componentWillUpdate(nextProps, nextState) {
+    if (this.widgetWillUpdate) {
+      this.widgetWillUpdate(nextProps, nextState);
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
     this.externalRender();
+    if (this.widgetDidUpdate) {
+      this.widgetDidUpdate(prevProps, prevState);
+    }
+  }
+  componentWillUnmount() {
+    if (this.widgetWillUnmount) {
+      this.widgetWillUnmount();
+    }
   }
   externalRender() {
     if (this.props.mode === 'view') {

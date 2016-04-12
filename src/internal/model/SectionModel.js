@@ -5,7 +5,7 @@ import { WidgetModel } from './WidgetModel';
 import { PortalState } from './PortalState';
 
 export class SectionModel {
-  constructor(pageId, sectionId, model) {
+  constructor(pageId, model) {
     if (!(model instanceof Immutable.Map)) {
       throw new Error('Not a valid model');
     }

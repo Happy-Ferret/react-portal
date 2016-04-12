@@ -21,15 +21,25 @@ export * from './api/wrappers/PortalWrapper';
 export * from './api/Portal';
 export * from './api/Widget';
 
-// TODO : third party class extends for WidgetEditComponent
 // TODO : add section buttons (add widget, remove section)
-// TODO : add resources bundles for label in portal config
+//   * InternalSectionButtons
+//   * InternalAddWidgetButton
+//   * InternalRemoveSectionButton
+//   * SectionButtons
+//   * AddWidgetButton
+//   * RemoveSectionButton
 // TODO : add widget not found and protect bad widget lookup
+//   * WidgetNotFound
 // TODO : add default preferences view in widget with JSON editor (pass prefs)
-// TODO : change lifecycle methods name in WidgetDOM (widgetWillUnmount, etc ...)
+//   * DefaultPreferenceView (directly inside Widget API renderEdit)
 // TODO : add button to add section to the current page
+//   * InternalPageButtons
+//   * InternalAddSectionButton
+//   * PageButtons
+//   * AddSectionButton
+// TODO : add resources bundles for label in portal config
 // TODO : propose 2 types of layout in the public API ???
-// TODO : add catalog popup to add widget
+// TODO : add catalog popup to add widget (in a special tag in InternalPortal)
 // TODO : do we need to handle widget width/height ???
 // TODO : write readme
 // TODO : write tests
@@ -37,3 +47,4 @@ export * from './api/Widget';
 // TODO : pass user context to widgets ???
 // TODO : clean and nice default style with svg icons
 // TODO : what about pluggable transition ???
+// TODO : third party class extends for WidgetEditComponent

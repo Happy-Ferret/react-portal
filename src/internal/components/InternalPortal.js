@@ -113,8 +113,7 @@ export const InternalPortal = React.createClass({
                         removeWidget={this.removeWidget
                           .bind(this, { id: page.id() }, { id: section.id() }, widget)}
                         WidgetEditComponent={WidgetEditComponent}
-                        WidgetViewComponent={WidgetViewComponent}
-                        Widget={components.Widget} />
+                        WidgetViewComponent={WidgetViewComponent} />
                     );
                   })
                 }
