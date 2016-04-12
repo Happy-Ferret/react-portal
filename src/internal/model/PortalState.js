@@ -15,19 +15,19 @@ export class PortalState {
     return this._immutable;
   }
 
-  removeWidget(fromPage, fromSection, widget) {
-    return PortalState.of(this.getImmutable()
-      .deleteIn(['pages', fromPage.id, 'sections', fromSection.id, 'widgets', widget.id]));
-  }
-
   addPage(page) {
     return PortalState.of(this.getImmutable()
       .setIn(['pages', page.id], Immutable.fromJS(page)));
   }
 
-  removeSection(page) {
+  removePage(page) {
     return PortalState.of(this.getImmutable()
       .deleteIn(['pages', page.id]));
+  }
+
+  removePageById(id) {
+    return PortalState.of(this.getImmutable()
+      .deleteIn(['pages', id]));
   }
 
   addSection(toPage, section) {
@@ -40,6 +40,11 @@ export class PortalState {
       .deleteIn(['pages', fromPage.id, 'sections', section.id]));
   }
 
+  removeSectionById(fromPage, id) {
+    return PortalState.of(this.getImmutable()
+      .deleteIn(['pages', fromPage.id, 'sections', id]));
+  }
+
   addWidget(toPage, toSection, widget) {
     return PortalState.of(this.getImmutable()
       .setIn([
@@ -47,6 +52,16 @@ export class PortalState {
         'sections', toSection.id,
         'widgets', widget.id,
       ], Immutable.fromJS(widget)));
+  }
+
+  removeWidget(fromPage, fromSection, widget) {
+    return PortalState.of(this.getImmutable()
+      .deleteIn(['pages', fromPage.id, 'sections', fromSection.id, 'widgets', widget.id]));
+  }
+
+  removeWidgetById(fromPage, fromSection, id) {
+    return PortalState.of(this.getImmutable()
+      .deleteIn(['pages', fromPage.id, 'sections', fromSection.id, 'widgets', id]));
   }
 
   findPageByPosition(position) {

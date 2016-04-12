@@ -31,10 +31,8 @@ export * from './api/Widget';
 // TODO : propose 2 types of layout in the public API ???
 // TODO : add catalog popup to add widget
 // TODO : do we need to handle widget width/height ???
-// TODO : pass state to immutable.js
 // TODO : write readme
 // TODO : write tests
-// TODO : service to manipulate state easily
 // TODO : function for authorization
 // TODO : pass user context to widgets ???
 // TODO : clean and nice default style with svg icons
