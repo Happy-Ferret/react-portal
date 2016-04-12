@@ -16,7 +16,6 @@ export const InternalWidgetContainer = React.createClass({
     className: PropTypes.string,
     children: PropTypes.element,
     components: PropTypes.object,
-    dispatch: PropTypes.func,
     globalStyle: PropTypes.object,
     id: PropTypes.string,
     position: PropTypes.number,
@@ -67,6 +66,7 @@ export const InternalWidgetContainer = React.createClass({
     } = this.props;
     const { WidgetContainer, WidgetBody } = components;
     const title = WidgetViewComponent.title;
+    const description = WidgetViewComponent.description;
     const View = this.state.mode === 'view' ? WidgetViewComponent : WidgetEditComponent;
     return (
       <WidgetContainer className={this.props.className} style={this.props.style}>
@@ -75,7 +75,7 @@ export const InternalWidgetContainer = React.createClass({
           style={maybeStyle(globalStyle, 'WidgetBar')}
           WidgetBar={components.WidgetBar}>
           <InternalWidgetBarInfo
-            {...widget}
+            description={description}
             className={maybeClassName(globalStyle, 'WidgetBarInfo')}
             style={maybeStyle(globalStyle, 'WidgetBarInfo')}
             WidgetBarInfo={components.WidgetBarInfo} />

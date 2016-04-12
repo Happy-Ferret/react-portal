@@ -1,4 +1,10 @@
 export const defaultStyle = {
+  AddSectionButton: {
+    width: 30,
+  },
+  AddWidgetButton: {
+    width: 30,
+  },
   DefaultPreferenceView: {
     Container: {
       display: 'flex',
@@ -25,8 +31,18 @@ export const defaultStyle = {
       marginTop: 5,
     },
   },
+  PageButtons: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 50,
+    height: 50,
+  },
   Portal: {
 
+  },
+  RemoveSectionButton: {
+    width: 30,
   },
   SectionLayout: {
     display: 'flex',
@@ -39,6 +55,13 @@ export const defaultStyle = {
     padding: 0,
     margin: 0,
     justifyContent: 'flex-start',
+  },
+  SectionButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 50,
   },
   WidgetContainer: {
     border: '1px solid #ccc',
@@ -68,6 +91,7 @@ export const defaultStyle = {
     flexGrow: 1,
     marginRight: 5,
     justifyContent: 'flex-start',
+    cursor: 'pointer',
   },
   WidgetBarMoveButton: {
 

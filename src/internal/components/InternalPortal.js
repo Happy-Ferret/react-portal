@@ -3,6 +3,11 @@ import React, { PropTypes } from 'react';
 import { InternalSectionLayout } from './InternalSectionLayout';
 import { InternalSection } from './InternalSection';
 import { InternalWidgetContainer } from './InternalWidgetContainer';
+import { InternalPageButtons } from './InternalPageButtons';
+import { InternalAddSectionButton } from './InternalAddSectionButton';
+import { InternalSectionButtons } from './InternalSectionButtons';
+import { InternalRemoveSectionButton } from './InternalRemoveSectionButton';
+import { InternalAddWidgetButton } from './InternalAddWidgetButton';
 
 import { maybeClassName, maybeStyle, isString } from '../../utils';
 
@@ -113,17 +118,37 @@ export const InternalPortal = React.createClass({
                         WidgetEditComponent={WidgetEditComponent}
                         WidgetViewComponent={WidgetViewComponent} />
                     );
-                  })
+                  }).concat(<InternalSectionButtons
+                    key="InternalSectionButtons"
+                    className={maybeClassName(style, 'SectionButtons')}
+                    style={maybeStyle(style, 'SectionButtons')}
+                    SectionButtons={components.SectionButtons}>
+                    <InternalRemoveSectionButton
+                      className={maybeClassName(style, 'RemoveSectionButton')}
+                      style={maybeStyle(style, 'RemoveSectionButton')}
+                      removeSection={this.removeSection.bind(this, { id: page.id() })}
+                      RemoveSectionButton={components.RemoveSectionButton} />
+                    <InternalAddWidgetButton
+                      className={maybeClassName(style, 'AddWidgetButton')}
+                      style={maybeStyle(style, 'AddWidgetButton')}
+                      addWidget={this.addWidget.bind(this, { id: page.id() }, { id: section.id() })}
+                      AddWidgetButton={components.AddWidgetButton} />
+                  </InternalSectionButtons>)
                 }
               </InternalSection>
             )
           }
         </InternalSectionLayout>
-        <button
-          type="button"
-          onClick={this.addSection.bind(this, { id: page.id() })}>
-            Add section
-        </button>
+        <InternalPageButtons
+          className={maybeClassName(style, 'PageButtons')}
+          style={maybeStyle(style, 'PageButtons')}
+          PageButtons={components.PageButtons}>
+            <InternalAddSectionButton
+              className={maybeClassName(style, 'AddSectionButton')}
+              style={maybeStyle(style, 'AddSectionButton')}
+              addSection={this.addSection.bind(this, { id: page.id() })}
+              AddSectionButton={components.AddSectionButton} />
+        </InternalPageButtons>
       </div>
     );
   },

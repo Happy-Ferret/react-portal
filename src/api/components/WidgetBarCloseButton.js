@@ -11,6 +11,7 @@ export const WidgetBarCloseButton = React.createClass({
       <button
         onClick={this.props.removeWidget}
         type="button"
+        title="Remove this widget"
         className={this.props.className}
         style={this.props.style}>
           x

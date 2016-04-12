@@ -13,7 +13,7 @@ export class WidgetNotFound extends Widget {
 }
 
 WidgetNotFound.title = '';
-WidgetNotFound.description = null;
+WidgetNotFound.description = 'Unable to find your widget\nMaybe your configuration is wrong.';
 WidgetNotFound.defaultPrefs = {};
 WidgetNotFound.hasPrefs = false;
 WidgetNotFound.alwaysShowPrefs = false;

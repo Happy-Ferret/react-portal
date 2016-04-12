@@ -1,19 +1,16 @@
 import React, { PropTypes } from 'react';
 
-export const InternalWidgetBar = React.createClass({
+export const SectionButtons = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-     
-    WidgetBar: PropTypes.func,
     style: PropTypes.object,
   },
   render() {
-    const { WidgetBar } = this.props;
     return (
-      <WidgetBar className={this.props.className} style={this.props.style}>
+      <div className={this.props.className} style={this.props.style}>
         {this.props.children}
-      </WidgetBar>
+      </div>
     );
   },
 });

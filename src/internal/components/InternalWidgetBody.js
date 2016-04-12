@@ -4,7 +4,7 @@ export const InternalWidgetBody = React.createClass({
   propTypes: {
     children: PropTypes.any,
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+     
     WidgetBody: PropTypes.func,
     style: PropTypes.object,
   },

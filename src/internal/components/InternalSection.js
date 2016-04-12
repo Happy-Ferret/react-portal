@@ -5,7 +5,6 @@ export const InternalSection = React.createClass({
     addWidget: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
     id: PropTypes.string,
     position: PropTypes.number,
     Section: PropTypes.func,

@@ -4,15 +4,18 @@ export const InternalWidgetBarInfo = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+    description: PropTypes.string,
     WidgetBarInfo: PropTypes.func,
     style: PropTypes.object,
   },
   render() {
     const { WidgetBarInfo } = this.props;
     return (
-      <WidgetBarInfo className={this.props.className} style={this.props.style}>
-        {this.props.children}
+      <WidgetBarInfo
+        description={this.props.description}
+        className={this.props.className}
+        style={this.props.style}>
+          {this.props.children}
       </WidgetBarInfo>
     );
   },

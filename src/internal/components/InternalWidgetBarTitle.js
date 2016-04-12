@@ -4,7 +4,7 @@ export const InternalWidgetBarTitle = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+     
     WidgetBarTitle: PropTypes.func,
     style: PropTypes.object,
     title: PropTypes.string,

@@ -4,7 +4,7 @@ export const InternalWidgetBarCloseButton = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+     
     removeWidget: PropTypes.func,
     style: PropTypes.object,
     WidgetBarCloseButton: PropTypes.func,

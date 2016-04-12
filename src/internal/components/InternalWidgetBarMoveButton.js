@@ -4,7 +4,7 @@ export const InternalWidgetBarMoveButton = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+     
     WidgetBarMoveButton: PropTypes.func,
     style: PropTypes.object,
   },

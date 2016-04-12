@@ -21,18 +21,9 @@ export * from './api/wrappers/PortalWrapper';
 export * from './api/Portal';
 export * from './api/Widget';
 
-// TODO : add section buttons (add widget, remove section)
-//   * InternalSectionButtons
-//   * InternalAddWidgetButton
-//   * InternalRemoveSectionButton
-//   * SectionButtons
-//   * AddWidgetButton
-//   * RemoveSectionButton
-// TODO : add button to add section to the current page
-//   * InternalPageButtons
-//   * InternalAddSectionButton
-//   * PageButtons
-//   * AddSectionButton
+// TODO : handle remove section
+// TODO : handle remove page
+// TODO : handle add widget
 // TODO : add resources bundles for label in portal config
 // TODO : propose 2 types of layout in the public API ???
 // TODO : add catalog popup to add widget (in a special tag in InternalPortal)
@@ -44,6 +35,5 @@ export * from './api/Widget';
 // TODO : clean and nice default style with svg icons
 // TODO : what about pluggable transition ???
 // TODO : third party class extends for WidgetEditComponent
-// TODO : hide infos if no description
 // TODO : hide buttons if no admin mode
-// TODO : hide preferences button if no prefs
+// TODO : hide preferences button if no admin mode and no always show prefs

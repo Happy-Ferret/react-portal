@@ -4,7 +4,7 @@ export const InternalSectionLayout = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+     
     SectionLayout: PropTypes.func,
     style: PropTypes.object,
   },

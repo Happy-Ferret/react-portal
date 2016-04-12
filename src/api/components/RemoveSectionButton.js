@@ -1,20 +1,20 @@
 import React, { PropTypes } from 'react';
 
-export const WidgetBarPreferencesButton = React.createClass({
+export const RemoveSectionButton = React.createClass({
   propTypes: {
+    removeSection: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,
-    onClick: PropTypes.func,
   },
   render() {
     return (
       <button
-        onClick={this.props.onClick}
+        onClick={this.props.removeSection}
         type="button"
-        title="Open widget preferences"
+        title="Remove this section"
         className={this.props.className}
         style={this.props.style}>
-        p
+          -
       </button>
     );
   },

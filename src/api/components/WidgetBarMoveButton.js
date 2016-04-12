@@ -7,8 +7,12 @@ export const WidgetBarMoveButton = React.createClass({
   },
   render() {
     return (
-      <button type="button" className={this.props.className} style={this.props.style}>
-        m
+      <button
+        type="button"
+        title="Move this widget"
+        className={this.props.className}
+        style={this.props.style}>
+          m
       </button>
     );
   },

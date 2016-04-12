@@ -4,7 +4,7 @@ export const InternalWidgetBarPreferencesButton = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
-    dispatch: PropTypes.func,
+     
     onClick: PropTypes.func,
     WidgetBarPreferencesButton: PropTypes.func,
     style: PropTypes.object,
