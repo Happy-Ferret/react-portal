@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import { Portal, PortalState } from 'react-portal';
 
 import { PortalStyle } from './custom/style';
+import { WidgetBarMoveButton, WidgetBarCloseButton } from './custom/components';
 
 class MyPortal extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class MyPortal extends React.Component {
         page={page}
         admin={admin}
         style={PortalStyle}
+        components={{ WidgetBarMoveButton, WidgetBarCloseButton }}
         portalState={portalState}
         onChange={this.onChange} />
     );
