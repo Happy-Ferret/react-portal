@@ -1,8 +1,67 @@
+const Button = {
+  padding: '1px 5px',
+  fontSize: 12,
+  lineHeight: '1.5',
+  borderRadius: 3,
+  color: '#000',
+  backgroundColor: '#337ab7',
+  // border-color: #2e6da4,
+  marginBottom: 0,
+  fontWeight: 400,
+  textAlign: 'center',
+  whiteSpace: 'nowrap',
+  verticalAlign: 'middle',
+  MsTouchAction: 'manipulation',
+  touchAction: 'manipulation',
+  cursor: 'pointer',
+  WebkitUserSelect: 'none',
+  MozUserSelect: 'none',
+  MsUserSelect: 'none',
+  userSelect: 'none',
+  backgroundImage: 'none',
+  border: '0px solid transparent',
+};
+
+const PrimaryButton = {
+  color: '#fff',
+  backgroundColor: '#337ab7',
+};
+const SuccessButton = {
+  color: '#fff',
+  backgroundColor: '#449d44',
+};
+const InfoButton = {
+  color: '#fff',
+  backgroundColor: '#31b0d5',
+};
+const DarkButton = {
+  color: '#fff',
+  backgroundColor: '#666',
+};
+const InverseButton = {
+  color: '#fff',
+  backgroundColor: '#000',
+};
+const WarningButton = {
+  color: '#fff',
+  backgroundColor: '#f0ad4e',
+};
+const DangerButton = {
+  color: '#fff',
+  backgroundColor: '#c9302c',
+};
+
 export const defaultStyle = {
   AddSectionButton: {
+    ...Button,
+    ...SuccessButton,
     width: 30,
   },
   AddWidgetButton: {
+    ...Button,
+    ...SuccessButton,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
     width: 30,
   },
   DefaultPreferenceView: {
@@ -35,13 +94,17 @@ export const defaultStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 50,
+    width: 40,
     height: 50,
   },
   Portal: {
 
   },
   RemoveSectionButton: {
+    ...Button,
+    ...DangerButton,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     width: 30,
   },
   SectionLayout: {
@@ -85,19 +148,40 @@ export const defaultStyle = {
     justifyContent: 'flex-end',
   },
   WidgetBarCloseButton: {
-
+    ...Button,
+    ...DangerButton,
+    width: 20,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
   },
   WidgetBarInfo: {
     flexGrow: 1,
     marginRight: 5,
-    justifyContent: 'flex-start',
     cursor: 'pointer',
+    color: 'white',
+    backgroundColor: '#999',
+    minWidth: 10,
+    padding: '3px 0px',
+    fontSize: 12,
+    fontWeight: 700,
+    lineHeight: '1',
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    verticalAlign: 'middle',
+    borderRadius: 10,
   },
   WidgetBarMoveButton: {
-
+    ...Button,
+    ...InverseButton,
+    width: 20,
+    borderRadius: 0,
   },
   WidgetBarPreferencesButton: {
-
+    ...Button,
+    ...DarkButton,
+    width: 20,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
   },
   WidgetBarTitle: {
     flexGrow: 10,
