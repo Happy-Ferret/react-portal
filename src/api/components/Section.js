@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 
 export const Section = React.createClass({
   propTypes: {
+    addWidget: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.element),
     className: PropTypes.string,
     style: PropTypes.object,
     removeSection: PropTypes.func,
-    addWidget: PropTypes.func,
   },
   render() {
     return (

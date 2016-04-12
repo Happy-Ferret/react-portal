@@ -11,7 +11,6 @@ import { defaultStyle } from '../../api/style';
 import { defaultComponents } from '../../api/components';
 
 export const InternalPortal = React.createClass({
-  // TODO : resources bundle for labels
   propTypes: {
     admin: PropTypes.bool,
     page: PropTypes.number,

@@ -14,7 +14,6 @@ export const InternalSection = React.createClass({
   },
   render() {
     const { Section } = this.props;
-    // TODO : add section buttons
     return (
       <Section
         addWidget={this.props.addWidget}
