@@ -68,7 +68,7 @@ export const InternalPortal = React.createClass({
     this.props.onChange(newState);
   },
   render() {
-    const page = this.props.portalState.getPageAtPosition(this.props.page); // TODO protect
+    const page = this.props.portalState.findPageByPosition(this.props.page); // TODO protect
     const style = { ...defaultStyle, ...this.props.style };
     const components = { ...defaultComponents, ...this.props.components };
     // TODO addSection buttons

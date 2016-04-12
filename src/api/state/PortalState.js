@@ -1,5 +1,5 @@
 import { uuid } from '../../utils';
-import { InternalPortalState } from '../../internal/model/InternalPortalState';
+import { PortalState as InternalPortalState } from '../../internal/model/PortalState';
 
 export const PortalState = {
   empty() {
