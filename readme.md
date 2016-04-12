@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Portal, PortalState } from 'react-portal';
 
-import { PortalStyle } from './styles/portal';
+import { PortalStyle } from './custom/style';
 
 class MyPortal extends React.Component {
   constructor(props) {
