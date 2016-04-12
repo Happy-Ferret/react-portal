@@ -47,11 +47,11 @@ export function maybeStyle(styles, key) {
   return undefined;
 }
 
-export function autoBind(what) {
-  for (const key in what) {  // eslint-disable-line
-    const value = what[key];
-    if (isFunction(value)) {
-      what[key] = value.bind(what); // eslint-disable-line
+export function autoBind(instance) {
+  for (const key in instance) {  // eslint-disable-line
+    if (isFunction(instance[key])) {
+      instance[key] = instance[key].bind(instance); // eslint-disable-line
     }
   }
+  return instance;
 }

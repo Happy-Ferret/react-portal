@@ -1,10 +1,10 @@
-import Immutable from 'immutable';
 import { uuid } from '../../utils';
+import { InternalPortalState } from '../../internal/model/InternalPortalState';
 
 export const PortalState = {
   empty() {
     const pageUUID = uuid();
-    return Immutable.fromJS({
+    return InternalPortalState.fromJson({
       pages: {
         [pageUUID]: {
           id: pageUUID,
@@ -19,7 +19,7 @@ export const PortalState = {
     const pageUUID = uuid();
     const sectionUUID = uuid();
     const widgetUUID = uuid();
-    return Immutable.fromJS({
+    return InternalPortalState.fromJson({
       pages: {
         [pageUUID]: {
           id: pageUUID,
@@ -54,7 +54,7 @@ export const PortalState = {
     const widget2UUID = uuid();
     const widget3UUID = uuid();
     const widget4UUID = uuid();
-    return Immutable.fromJS({
+    return InternalPortalState.fromJson({
       pages: {
         [pageUUID]: {
           id: pageUUID,
