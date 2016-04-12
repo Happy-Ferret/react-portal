@@ -84,6 +84,11 @@ export class DOMWidget extends React.Component {
   catchRefNode(node) {
     this.refNode = node;
   }
+  renderEdit() {
+    return (
+      <DefaultPreferenceView {...this.props} />
+    );
+  }
   render() {
     return (
       <div ref={this.catchRefNode}></div>
@@ -93,4 +98,8 @@ export class DOMWidget extends React.Component {
 
 DOMWidget.propTypes = {
   mode: PropTypes.oneOf(['view', 'edit']),
+  preferences: PropTypes.object,
+  savePreferences: PropTypes.func,
+  showEdit: PropTypes.func,
+  showView: PropTypes.func,
 };
