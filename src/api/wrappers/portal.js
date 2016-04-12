@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Immutable from 'immutable';
 
 import { Portal } from '../Portal';
 import { PortalState } from '../state/portalState';
@@ -14,7 +13,7 @@ const WrappedPortal = React.createClass({
   },
   getInitialState() {
     return {
-      portalState: PortalState.emptyState(),
+      portalState: PortalState.empty(),
       admin: false,
       page: 0,
     };

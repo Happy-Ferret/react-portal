@@ -1,32 +1,37 @@
+import Immutable from 'immutable';
 import { uuid } from '../../utils';
 
 export const PortalState = {
   empty() {
-    return {
-      pages: [
-        {
-          id: uuid(),
+    const pageUUID = uuid();
+    return Immutable.fromJS({
+      pages: {
+        [pageUUID]: {
+          id: pageUUID,
           title: 'Page 1',
           position: 0,
-          sections: [],
+          sections: {},
         },
-      ],
-    };
+      },
+    });
   },
   ofOne(widget, preferences) {
-    return {
-      pages: [
-        {
-          id: uuid(),
+    const pageUUID = uuid();
+    const sectionUUID = uuid();
+    const widgetUUID = uuid();
+    return Immutable.fromJS({
+      pages: {
+        [pageUUID]: {
+          id: pageUUID,
           title: 'Page 1',
           position: 0,
-          sections: [
-            {
-              id: uuid(),
+          sections: {
+            [sectionUUID]: {
+              id: sectionUUID,
               position: 0,
-              widgets: [
-                {
-                  id: uuid(),
+              widgets: {
+                [widgetUUID]: {
+                  id: widgetUUID,
                   position: 0,
                   widget,
                   size: {
@@ -34,27 +39,34 @@ export const PortalState = {
                   },
                   preferences,
                 },
-              ],
+              },
             },
-          ],
+          },
         },
-      ],
-    };
+      },
+    });
   },
   sample() {
-    return {
-      pages: [
-        {
-          id: uuid(),
+    const pageUUID = uuid();
+    const section1UUID = uuid();
+    const section2UUID = uuid();
+    const widget1UUID = uuid();
+    const widget2UUID = uuid();
+    const widget3UUID = uuid();
+    const widget4UUID = uuid();
+    return Immutable.fromJS({
+      pages: {
+        [pageUUID]: {
+          id: pageUUID,
           title: 'Page 1',
           position: 0,
-          sections: [
-            {
-              id: uuid(),
+          sections: {
+            [section1UUID]: {
+              id: section1UUID,
               position: 0,
-              widgets: [
-                {
-                  id: uuid(),
+              widgets: {
+                [widget1UUID]: {
+                  id: widget1UUID,
                   position: 0,
                   widget: {
                     view: 'sampleWidget',
@@ -64,8 +76,9 @@ export const PortalState = {
                     width: 4,
                   },
                   preferences: {},
-                }, {
-                  id: uuid(),
+                },
+                [widget2UUID]: {
+                  id: widget2UUID,
                   position: 1,
                   widget: {
                     view: 'sampleWidget',
@@ -76,14 +89,14 @@ export const PortalState = {
                   },
                   preferences: {},
                 },
-              ],
+              },
             },
-            {
-              id: uuid(),
+            [section2UUID]: {
+              id: section2UUID,
               position: 1,
-              widgets: [
-                {
-                  id: uuid(),
+              widgets: {
+                [widget3UUID]: {
+                  id: widget3UUID,
                   position: 0,
                   widget: {
                     view: 'sampleWidget',
@@ -93,8 +106,9 @@ export const PortalState = {
                     width: 4,
                   },
                   preferences: {},
-                }, {
-                  id: uuid(),
+                },
+                [widget4UUID]: {
+                  id: widget4UUID,
                   position: 1,
                   widget: {
                     view: 'sampleWidget',
@@ -105,11 +119,11 @@ export const PortalState = {
                   },
                   preferences: {},
                 },
-              ],
+              },
             },
-          ],
+          },
         },
-      ],
-    };
+      },
+    });
   },
 };

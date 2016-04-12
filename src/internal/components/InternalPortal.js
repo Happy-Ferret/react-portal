@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 
 import { InternalSectionLayout } from './InternalSectionLayout';
 import { InternalSection } from './InternalSection';
@@ -50,102 +51,39 @@ export const InternalPortal = React.createClass({
       },
     };
   },
-  removeWidget(widget) {
-    for (const pidx in this.props.portalState.pages) { // eslint-disable-line
-      const p = this.props.portalState.pages[pidx];
-      for (const sidx in p.sections) { // eslint-disable-line
-        const s = p.sections[sidx];
-        for (const widx in s.widgets) { // eslint-disable-line
-          const w = s.widgets[widx];
-          if (w.id === widget.id) {
-            const newWidgets = [...s.widgets];
-            newWidgets.splice(widx, 1);
-            const newSection = { ...s, widgets: newWidgets };
-            const newSections = [...p.sections];
-            newSections.splice(sidx, 1, newSection);
-            const newPage = { ...p, sections: newSections };
-            const newPages = [...this.props.portalState.pages];
-            newPages.splice(pidx, 1, newPage);
-            const newState = {
-              ...this.props.portalState,
-              pages: newPages,
-            };
-            this.props.onChange(newState);
-            return;
-          }
-        }
-      }
-    }
+  removeWidget(fromPage, fromSection, widget) {
+    const newState = this.props.portalState
+      .deleteIn(['pages', fromPage.id, 'sections', fromSection.id, 'widgets', widget.id]);
+    this.props.onChange(newState);
   },
-  removeSection(section) {
-    for (const pidx in this.props.portalState.pages) { // eslint-disable-line
-      const p = this.props.portalState.pages[pidx];
-      for (const sidx in p.sections) { // eslint-disable-line
-        const s = p.sections[sidx];
-        if (s.id === section.id) {
-          const newSections = [...p.sections];
-          newSections.splice(sidx, 1);
-          const newPage = { ...p, sections: newSections };
-          const newPages = [...this.props.portalState.pages];
-          newPages.splice(pidx, 1, newPage);
-          const newState = {
-            ...this.props.portalState,
-            pages: newPages,
-          };
-          this.props.onChange(newState);
-          return;
-        }
-      }
-    }
+  removeSection(fromPage, section) {
+    const newState = this.props.portalState
+      .deleteIn(['pages', fromPage.id, 'sections', section.id]);
+    this.props.onChange(newState);
   },
   addSection(toPage, section) {
-    for (const pidx in this.props.portalState.pages) { // eslint-disable-line
-      const p = this.props.portalState.pages[pidx];
-      if (p.id === toPage.id) {
-        const newSections = [...p.sections];
-        newSections.push(section);
-        const newPage = { ...p, sections: newSections };
-        const newPages = [...this.props.portalState.pages];
-        newPages.splice(pidx, 1, newPage);
-        const newState = {
-          ...this.props.portalState,
-          pages: newPages,
-        };
-        this.props.onChange(newState);
-        return;
-      }
-    }
+    const newState = this.props.portalState
+      .setIn(['pages', toPage.id, 'sections', section.id], Immutable.fromJS(section));
+    this.props.onChange(newState);
   },
-  addWidget(toSection, widget) {
-    for (const pidx in this.props.portalState.pages) { // eslint-disable-line
-      const p = this.props.portalState.pages[pidx];
-      for (const sidx in p.sections) { // eslint-disable-line
-        const s = p.sections[sidx];
-        if (s.id === toSection.id) {
-          const newWidgets = [...s.widgets];
-          newWidgets.push(widget);
-          const newSection = { ...s, widgets: newWidgets };
-          const newSections = [...p.sections];
-          newSections.splice(sidx, 1, newSection);
-          const newPage = { ...p, sections: newSections };
-          const newPages = [...this.props.portalState.pages];
-          newPages.splice(pidx, 1, newPage);
-          const newState = {
-            ...this.props.portalState,
-            pages: newPages,
-          };
-          this.props.onChange(newState);
-          return;
-        }
-      }
-    }
+  addWidget(toPage, toSection, widget) {
+    const newState = this.props.portalState
+      .setIn([
+        'pages', toPage.id,
+        'sections', toSection.id,
+        'widgets', widget.id,
+      ], Immutable.fromJS(widget));
+    this.props.onChange(newState);
   },
   render() {
-    // TODO protect
-    const page = this.props.portalState.pages.filter(p => p.position === this.props.page)[0];
+    const page = this.props.portalState
+      .get('pages')
+      .valueSeq()
+      .toArray()
+      .filter(p => p.get('position') === this.props.page)[0]; // TODO protect
     const style = { ...defaultStyle, ...this.props.style };
     const components = { ...defaultComponents, ...this.props.components };
-    // TODO addSection button this.addSection.bind(this, page);
+    // TODO addSection buttons
     return (
       <div
         className={maybeClassName(style, 'Portal')}
@@ -155,18 +93,21 @@ export const InternalPortal = React.createClass({
           style={maybeStyle(style, 'SectionLayout')}
           SectionLayout={components.SectionLayout}>
           {
-            page.sections.map(section =>
+            page.get('sections').valueSeq().toArray().map(section =>
               <InternalSection
-                key={section.id}
-                id={section.id}
-                position={section.position}
+                key={section.get('id')}
+                id={section.get('id')}
+                position={section.get('position')}
                 className={maybeClassName(style, 'Section')}
                 style={maybeStyle(style, 'Section')}
-                removeSection={this.removeSection.bind(this, section)}
-                addWidget={this.addWidget.bind(this, section)}
+                removeSection={this.removeSection
+                  .bind(this, { id: page.get('id') }, { id: section.get('id') })}
+                addWidget={this.addWidget
+                  .bind(this, { id: page.get('id') }, { id: section.get('id') })}
                 Section={components.Section}>
                 {
-                  section.widgets.map(widget => {
+                  section.get('widgets').valueSeq().toArray().map(immutableWidget => {
+                    const widget = immutableWidget.toJS();
                     const modeView = isString(widget.widget) ? widget.widget : widget.widget.view;
                     const modeEdit = isString(widget.widget) ? widget.widget : widget.widget.edit;
                     const WidgetViewComponent =
@@ -181,7 +122,8 @@ export const InternalPortal = React.createClass({
                         components={components}
                         style={maybeStyle(style, 'WidgetContainer')}
                         globalStyle={style}
-                        removeWidget={this.removeWidget.bind(this, widget)}
+                        removeWidget={this.removeWidget
+                          .bind(this, { id: page.get('id') }, { id: section.get('id') }, widget)}
                         WidgetEditComponent={WidgetEditComponent}
                         WidgetViewComponent={WidgetViewComponent}
                         Widget={components.Widget} />
@@ -192,6 +134,11 @@ export const InternalPortal = React.createClass({
             )
           }
         </InternalSectionLayout>
+        <button
+          type="button"
+          onClick={this.addSection.bind(this, { id: page.get('id') })}>
+            Add section
+        </button>
       </div>
     );
   },

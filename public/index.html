@@ -13,7 +13,7 @@
         container: '#app',
         portalState: portalState,
         onChange: function(state) {
-          console.log('new portal', state);
+          console.log('new portal', state.toJS());
           portalState = state;
         },
         widgetsCatalog: {},
@@ -21,7 +21,7 @@
       setTimeout(function() {
         console.log('admin', portal.getAdmin());
         console.log('page', portal.getPage());
-        console.log('state', portal.getPortalState());
+        console.log('state', portal.getPortalState().toJS());
       }, 500);
     </script>
   </body>
