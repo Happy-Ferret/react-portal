@@ -1,3 +1,4 @@
+import { DefaultPreferenceView } from './DefaultPreferenceView';
 import { SectionLayout } from './SectionLayout';
 import { Section } from './Section';
 import { WidgetContainer } from './WidgetContainer';
@@ -9,8 +10,10 @@ import { WidgetBarPreferencesButton } from './WidgetBarPreferencesButton';
 import { WidgetBarMoveButton } from './WidgetBarMoveButton';
 import { WidgetBarCloseButton } from './WidgetBarCloseButton';
 import { WidgetBody } from './WidgetBody';
+import { WidgetNotFound } from './WidgetNotFound';
 
 export const defaultComponents = {
+  DefaultPreferenceView,
   SectionLayout,
   Section,
   WidgetContainer,
@@ -22,4 +25,5 @@ export const defaultComponents = {
   WidgetBarMoveButton,
   WidgetBarCloseButton,
   WidgetBody,
+  WidgetNotFound,
 };

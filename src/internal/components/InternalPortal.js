@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
-import Immutable from 'immutable';
 
 import { InternalSectionLayout } from './InternalSectionLayout';
 import { InternalSection } from './InternalSection';
 import { InternalWidgetContainer } from './InternalWidgetContainer';
-import { VoidWidget } from './VoidWidget';
 
 import { maybeClassName, maybeStyle, isString } from '../../utils';
 
@@ -39,7 +37,6 @@ export const InternalPortal = React.createClass({
     return {
       portalContext: {
         ...this.props,
-        store: this.store,
         components: {
           ...defaultComponents,
           ...this.props.components,
@@ -94,17 +91,18 @@ export const InternalPortal = React.createClass({
                   .bind(this, { id: page.id() }, { id: section.id() })}
                 Section={components.Section}>
                 {
-                  section.widgets().map(immutableWidget => {
-                    const widget = immutableWidget.toJS();
+                  section.widgets().map(widgetModel => {
+                    const widget = widgetModel.toJS();
                     const modeView = isString(widget.widget) ? widget.widget : widget.widget.view;
                     const modeEdit = isString(widget.widget) ? widget.widget : widget.widget.edit;
                     const WidgetViewComponent =
-                      this.props.widgetsCatalog[modeView] || VoidWidget;
+                      this.props.widgetsCatalog[modeView] || components.WidgetNotFound;
                     const WidgetEditComponent =
-                      this.props.widgetsCatalog[modeEdit] || VoidWidget;
+                      this.props.widgetsCatalog[modeEdit] || components.WidgetNotFound;
                     return (
                       <InternalWidgetContainer
                         {...widget}
+                        widgetModel={widgetModel}
                         key={widget.id}
                         className={maybeClassName(style, 'WidgetContainer')}
                         components={components}

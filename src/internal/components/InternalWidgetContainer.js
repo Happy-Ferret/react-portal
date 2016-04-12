@@ -24,6 +24,7 @@ export const InternalWidgetContainer = React.createClass({
     size: PropTypes.object,
     style: PropTypes.object,
     widget: PropTypes.object,
+    widgetModel: PropTypes.object,
     removeWidget: PropTypes.func,
     WidgetEditComponent: PropTypes.func,
     WidgetViewComponent: PropTypes.func,
@@ -39,11 +40,22 @@ export const InternalWidgetContainer = React.createClass({
   getPreferences() {
     return this.props.preferences;
   },
+  getPortalState() {
+    return this.context.portalContext.portalState;
+  },
   showEdit() {
     this.setState({ mode: 'edit' });
   },
   showView() {
     this.setState({ mode: 'view' });
+  },
+  updatePortalState(newState) {
+    this.context.portalContext.onChange(newState);
+  },
+  savePreferences(newPreferences) {
+    const newWidgetModel = this.props.widgetModel.updatePreferences(newPreferences);
+    const newState = newWidgetModel.mergeIntoModel(this.getPortalState());
+    this.updatePortalState(newState);
   },
   render() {
     const {
@@ -98,9 +110,11 @@ export const InternalWidgetContainer = React.createClass({
         </InternalWidgetBar>
         <InternalWidgetBody WidgetBody={WidgetBody}>
           <View
+            widgetModel={this.props.widgetModel}
+            globalStyle={this.props.globalStyle}
+            preferences={this.props.preferences}
             mode={this.state.mode}
-            savePreferences={() => ({})}
-            getPreferences={this.getPreferences}
+            savePreferences={this.savePreferences}
             showView={this.showView}
             showEdit={this.showEdit} />
         </InternalWidgetBody>

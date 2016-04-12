@@ -71,10 +71,10 @@ export class WidgetModel {
 
   mergeIntoModel(model) {
     return PortalState.of(
-      model.updateIn([
+      model.getImmutable().updateIn([
         'pages', this._pageId,
         'sections', this._sectionId,
-        'widget', this.id(),
+        'widgets', this.id(),
       ], () => this.getImmutable()));
   }
 

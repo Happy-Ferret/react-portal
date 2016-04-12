@@ -28,10 +28,6 @@ export * from './api/Widget';
 //   * SectionButtons
 //   * AddWidgetButton
 //   * RemoveSectionButton
-// TODO : add widget not found and protect bad widget lookup
-//   * WidgetNotFound
-// TODO : add default preferences view in widget with JSON editor (pass prefs)
-//   * DefaultPreferenceView (directly inside Widget API renderEdit)
 // TODO : add button to add section to the current page
 //   * InternalPageButtons
 //   * InternalAddSectionButton
@@ -48,3 +44,6 @@ export * from './api/Widget';
 // TODO : clean and nice default style with svg icons
 // TODO : what about pluggable transition ???
 // TODO : third party class extends for WidgetEditComponent
+// TODO : hide infos if no description
+// TODO : hide buttons if no admin mode
+// TODO : hide preferences button if no prefs

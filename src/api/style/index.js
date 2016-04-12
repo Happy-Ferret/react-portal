@@ -1,4 +1,30 @@
 export const defaultStyle = {
+  DefaultPreferenceView: {
+    Container: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'stretch',
+      flex: '1',
+    },
+    TextContainer: {
+      display: 'flex',
+      flex: '1',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    TextArea: {
+      width: '100%',
+      height: '100%',
+    },
+    Buttons: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      marginTop: 5,
+    },
+  },
   Portal: {
 
   },
@@ -53,6 +79,13 @@ export const defaultStyle = {
     flexGrow: 10,
   },
   WidgetBody: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  WidgetNotFound: {
+    width: 260,
+    height: 100,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

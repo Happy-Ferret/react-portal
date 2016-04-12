@@ -3,13 +3,15 @@
 import React, { PropTypes } from 'react';
 import { autoBind } from '../utils';
 
+import { DefaultPreferenceView } from '../api/components/DefaultPreferenceView';
+
 export class Widget extends React.Component {
   constructor(props) {
     super(props);
   }
   renderEdit() {
     return (
-      <div></div>
+      <DefaultPreferenceView {...this.props} />
     );
   }
   render(...args) {
@@ -23,6 +25,10 @@ export class Widget extends React.Component {
 
 Widget.propTypes = {
   mode: PropTypes.oneOf(['view', 'edit']),
+  preferences: PropTypes.object,
+  savePreferences: PropTypes.func,
+  showEdit: PropTypes.func,
+  showView: PropTypes.func,
 };
 
 export class DOMWidget extends React.Component {
