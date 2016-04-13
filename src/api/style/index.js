@@ -38,7 +38,11 @@ const DarkButton = {
   color: '#fff',
   backgroundColor: '#666',
 };
-const InverseButton = {
+const DarkerButton = {
+  color: '#fff',
+  backgroundColor: '#333',
+};
+const BlackButton = {
   color: '#fff',
   backgroundColor: '#000',
 };
@@ -54,12 +58,12 @@ const DangerButton = {
 export const defaultStyle = {
   AddSectionButton: {
     ...Button,
-    ...SuccessButton,
+    ...DarkButton,
     width: 30,
   },
   AddWidgetButton: {
     ...Button,
-    ...SuccessButton,
+    ...DarkButton,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     width: 30,
@@ -102,7 +106,7 @@ export const defaultStyle = {
   },
   RemoveSectionButton: {
     ...Button,
-    ...DangerButton,
+    ...BlackButton,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     width: 30,
@@ -149,7 +153,7 @@ export const defaultStyle = {
   },
   WidgetBarCloseButton: {
     ...Button,
-    ...DangerButton,
+    ...BlackButton,
     width: 20,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
@@ -161,7 +165,7 @@ export const defaultStyle = {
   },
   WidgetBarMoveButton: {
     ...Button,
-    ...InverseButton,
+    ...DarkerButton,
     width: 20,
     borderRadius: 0,
   },
