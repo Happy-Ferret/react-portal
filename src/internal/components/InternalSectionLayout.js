@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react';
 
+import { maybeClassName, maybeStyle } from '../../utils';
+
 export const InternalSectionLayout = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
-    className: PropTypes.string,
-     
-    SectionLayout: PropTypes.func,
-    style: PropTypes.object,
+  },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
   },
   render() {
-    const { SectionLayout } = this.props;
+    const { children } = this.props;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'SectionLayout');
+    const style = maybeStyle(globalStyle, 'SectionLayout');
+    const { SectionLayout } = this.context.portalContext.components;
     return (
-      <SectionLayout className={this.props.className} style={this.props.style}>
-        {this.props.children}
+      <SectionLayout className={className} style={style}>
+        {children}
       </SectionLayout>
     );
   },

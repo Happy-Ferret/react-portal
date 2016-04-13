@@ -1,15 +1,21 @@
 import React, { PropTypes } from 'react';
 
+import { maybeClassName, maybeStyle } from '../../utils';
+
 export const InternalAddSectionButton = React.createClass({
   propTypes: {
     addSection: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.element),
-    className: PropTypes.string,
-    AddSectionButton: PropTypes.func,
-    style: PropTypes.object,
+  },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
   },
   render() {
-    const { AddSectionButton, addSection, children, className, style } = this.props;
+    const { addSection, children } = this.props;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'AddSectionButton');
+    const style = maybeStyle(globalStyle, 'AddSectionButton');
+    const { AddSectionButton } = this.context.portalContext.components;
     return (
       <AddSectionButton addSection={addSection} className={className} style={style}>
           {children}

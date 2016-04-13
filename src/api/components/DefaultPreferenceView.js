@@ -10,6 +10,9 @@ export const DefaultPreferenceView = React.createClass({
     showEdit: PropTypes.func,
     showView: PropTypes.func,
   },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
+  },
   getInitialState() {
     return {
       preferences: JSON.stringify(this.props.preferences, null, 2),
@@ -33,7 +36,9 @@ export const DefaultPreferenceView = React.createClass({
       TextContainer,
       TextArea,
       Buttons,
-    } = this.props.globalStyle.DefaultPreferenceView;
+      ButtonSave,
+      ButtonCancel,
+    } = this.context.portalContext.style.DefaultPreferenceView;
     return (
       <div style={Container}>
         <div style={TextContainer}>
@@ -43,8 +48,8 @@ export const DefaultPreferenceView = React.createClass({
             onChange={this.onChangePreferenceJSON} />
         </div>
         <div style={Buttons}>
-          <button type="button" onClick={this.onCancel}>Cancel</button>
-          <button type="button" onClick={this.onSave}>Save</button>
+          <button type="button" style={ButtonCancel} onClick={this.onCancel}>Cancel</button>
+          <button type="button" style={ButtonSave} onClick={this.onSave}>Save</button>
         </div>
       </div>
     );

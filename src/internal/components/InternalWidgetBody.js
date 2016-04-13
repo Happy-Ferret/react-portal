@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react';
 
+import { maybeClassName, maybeStyle } from '../../utils';
+
 export const InternalWidgetBody = React.createClass({
   propTypes: {
     children: PropTypes.any,
-    className: PropTypes.string,
-     
-    WidgetBody: PropTypes.func,
-    style: PropTypes.object,
+  },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
   },
   render() {
-    const { WidgetBody } = this.props;
+    const { children } = this.props;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'WidgetBody');
+    const style = maybeStyle(globalStyle, 'WidgetBody');
+    const { WidgetBody } = this.context.portalContext.components;
     return (
-      <WidgetBody className={this.props.className} style={this.props.style}>
-        {this.props.children}
+      <WidgetBody className={className} style={style}>
+        {children}
       </WidgetBody>
     );
   },

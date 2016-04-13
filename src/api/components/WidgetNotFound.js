@@ -1,16 +1,21 @@
 /* eslint no-param-reassign: 0 */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Widget } from '../../api/Widget';
 
 export class WidgetNotFound extends Widget {
   renderView() {
+    const { style } = this.context.portalContext;
     return (
-      <div style={this.props.globalStyle.WidgetNotFound}>
+      <div style={style.WidgetNotFound}>
           <h3>Unable to find your widget</h3>
       </div>
     );
   }
 }
+
+WidgetNotFound.contextTypes = {
+  portalContext: PropTypes.object,
+};
 
 WidgetNotFound.title = '';
 WidgetNotFound.description = 'Unable to find your widget\nMaybe your configuration is wrong.';

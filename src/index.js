@@ -38,4 +38,3 @@ export * from './api/Widget';
 // TODO : hide buttons if no admin mode
 // TODO : hide preferences button if no admin mode and no always show prefs
 // TODO : show bar in portal conf
-// TODO : lookup for style, class and inner component from context in internal components

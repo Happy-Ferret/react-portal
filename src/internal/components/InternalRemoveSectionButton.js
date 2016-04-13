@@ -1,15 +1,21 @@
 import React, { PropTypes } from 'react';
 
+import { maybeClassName, maybeStyle } from '../../utils';
+
 export const InternalRemoveSectionButton = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
-    className: PropTypes.string,
     removeSection: PropTypes.func,
-    RemoveSectionButton: PropTypes.func,
-    style: PropTypes.object,
+  },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
   },
   render() {
-    const { RemoveSectionButton, className, children, style, removeSection } = this.props;
+    const { children, removeSection } = this.props;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'RemoveSectionButton');
+    const style = maybeStyle(globalStyle, 'RemoveSectionButton');
+    const { RemoveSectionButton } = this.context.portalContext.components;
     return (
       <RemoveSectionButton removeSection={removeSection} className={className} style={style}>
         {children}

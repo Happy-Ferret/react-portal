@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: 0 */
 const Button = {
   padding: '1px 5px',
   fontSize: 12,
@@ -75,6 +76,8 @@ export const defaultStyle = {
       justifyContent: 'space-between',
       alignItems: 'stretch',
       flex: '1',
+      width: 260,
+      height: 100,
     },
     TextContainer: {
       display: 'flex',
@@ -86,12 +89,25 @@ export const defaultStyle = {
     TextArea: {
       width: '100%',
       height: '100%',
+      borderColor: '#ccc',
     },
     Buttons: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-end',
       marginTop: 5,
+    },
+    ButtonSave: {
+      ...Button,
+      ...DarkButton,
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    ButtonCancel: {
+      ...Button,
+      ...BlackButton,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
     },
   },
   PageButtons: {

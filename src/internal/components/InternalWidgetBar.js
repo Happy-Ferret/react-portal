@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react';
 
+import { maybeClassName, maybeStyle } from '../../utils';
+
 export const InternalWidgetBar = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
-    className: PropTypes.string,
-     
-    WidgetBar: PropTypes.func,
-    style: PropTypes.object,
+  },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
   },
   render() {
-    const { WidgetBar } = this.props;
+    const { children } = this.props;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'WidgetBar');
+    const style = maybeStyle(globalStyle, 'WidgetBar');
+    const { WidgetBar } = this.context.portalContext.components;
     return (
-      <WidgetBar className={this.props.className} style={this.props.style}>
-        {this.props.children}
+      <WidgetBar className={className} style={style}>
+        {children}
       </WidgetBar>
     );
   },

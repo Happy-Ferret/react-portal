@@ -13,7 +13,6 @@ import { maybeClassName, maybeStyle } from '../../utils';
 
 export const InternalWidgetContainer = React.createClass({
   propTypes: {
-    className: PropTypes.string,
     children: PropTypes.element,
     components: PropTypes.object,
     globalStyle: PropTypes.object,
@@ -21,7 +20,6 @@ export const InternalWidgetContainer = React.createClass({
     position: PropTypes.number,
     preferences: PropTypes.object,
     size: PropTypes.object,
-    style: PropTypes.object,
     widget: PropTypes.object,
     widgetModel: PropTypes.object,
     removeWidget: PropTypes.func,
@@ -58,7 +56,6 @@ export const InternalWidgetContainer = React.createClass({
   },
   render() {
     const {
-      globalStyle,
       components,
       widget,
       WidgetEditComponent,
@@ -68,44 +65,23 @@ export const InternalWidgetContainer = React.createClass({
     const title = WidgetViewComponent.title;
     const description = WidgetViewComponent.description;
     const View = this.state.mode === 'view' ? WidgetViewComponent : WidgetEditComponent;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'WidgetContainer');
+    const style = maybeStyle(globalStyle, 'WidgetContainer');
     return (
-      <WidgetContainer className={this.props.className} style={this.props.style}>
-        <InternalWidgetBar
-          className={maybeClassName(globalStyle, 'WidgetBar')}
-          style={maybeStyle(globalStyle, 'WidgetBar')}
-          WidgetBar={components.WidgetBar}>
+      <WidgetContainer className={className} style={style}>
+        <InternalWidgetBar>
           <InternalWidgetBarInfo
-            description={description}
-            className={maybeClassName(globalStyle, 'WidgetBarInfo')}
-            style={maybeStyle(globalStyle, 'WidgetBarInfo')}
-            WidgetBarInfo={components.WidgetBarInfo} />
-          <InternalWidgetBarTitle
-            {...widget}
-            title={title}
-            className={maybeClassName(globalStyle, 'WidgetBarTitle')}
-            style={maybeStyle(globalStyle, 'WidgetBarTitle')}
-            WidgetBarTitle={components.WidgetBarTitle} />
-          <InternalWidgetBarButtons
-            className={maybeClassName(globalStyle, 'WidgetBarButtons')}
-            style={maybeStyle(globalStyle, 'WidgetBarButtons')}
-            WidgetBarButtons={components.WidgetBarButtons} >
+            description={description} />
+          <InternalWidgetBarTitle {...widget} title={title} />
+          <InternalWidgetBarButtons>
             <InternalWidgetBarPreferencesButton
               {...widget}
-              className={maybeClassName(globalStyle, 'WidgetBarPreferencesButton')}
-              style={maybeStyle(globalStyle, 'WidgetBarPreferencesButton')}
-              onClick={this.state.mode === 'view' ? this.showEdit : this.showView}
-              WidgetBarPreferencesButton={components.WidgetBarPreferencesButton} />
-            <InternalWidgetBarMoveButton
-              {...widget}
-              className={maybeClassName(globalStyle, 'WidgetBarMoveButton')}
-              style={maybeStyle(globalStyle, 'WidgetBarMoveButton')}
-              WidgetBarMoveButton={components.WidgetBarMoveButton} />
+              showPreferences={this.state.mode === 'view' ? this.showEdit : this.showView} />
+            <InternalWidgetBarMoveButton {...widget} />
             <InternalWidgetBarCloseButton
               {...widget}
-              className={maybeClassName(globalStyle, 'WidgetBarCloseButton')}
-              style={maybeStyle(globalStyle, 'WidgetBarCloseButton')}
-              removeWidget={this.props.removeWidget}
-              WidgetBarCloseButton={components.WidgetBarCloseButton} />
+              removeWidget={this.props.removeWidget} />
           </InternalWidgetBarButtons>
         </InternalWidgetBar>
         <InternalWidgetBody WidgetBody={WidgetBody}>

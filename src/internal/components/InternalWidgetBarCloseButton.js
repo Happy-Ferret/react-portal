@@ -1,22 +1,27 @@
 import React, { PropTypes } from 'react';
 
+import { maybeClassName, maybeStyle } from '../../utils';
+
 export const InternalWidgetBarCloseButton = React.createClass({
   propTypes: {
     children: PropTypes.arrayOf(PropTypes.element),
-    className: PropTypes.string,
-     
     removeWidget: PropTypes.func,
-    style: PropTypes.object,
-    WidgetBarCloseButton: PropTypes.func,
+  },
+  contextTypes: {
+    portalContext: React.PropTypes.object,
   },
   render() {
-    const { WidgetBarCloseButton } = this.props;
+    const { children, removeWidget } = this.props;
+    const globalStyle = this.context.portalContext.style;
+    const className = maybeClassName(globalStyle, 'WidgetBarCloseButton');
+    const style = maybeStyle(globalStyle, 'WidgetBarCloseButton');
+    const { WidgetBarCloseButton } = this.context.portalContext.components;
     return (
       <WidgetBarCloseButton
-        removeWidget={this.props.removeWidget}
-        className={this.props.className}
-        style={this.props.style}>
-          {this.props.children}
+        removeWidget={removeWidget}
+        className={className}
+        style={style}>
+          {children}
       </WidgetBarCloseButton>
     );
   },
