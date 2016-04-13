@@ -33,12 +33,9 @@ export * from './api/Widget';
 // TODO : write tests
 // TODO : function for authorization
 // TODO : pass user context to widgets ???
-// TODO : clean and nice default style with svg icons
 // TODO : what about pluggable transition ???
 // TODO : third party class extends for WidgetEditComponent
 // TODO : hide buttons if no admin mode
 // TODO : hide preferences button if no admin mode and no always show prefs
 
 // TODO : lookup for style, class and inner component from context in internal components
-// TODO : thinner info icon
-// TODO : defaultComponents and defaultStyle should be extended by user from the calling component not by internal portal
