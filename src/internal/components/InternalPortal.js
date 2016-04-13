@@ -39,17 +39,12 @@ export const InternalPortal = React.createClass({
     };
   },
   getChildContext() {
+    console.trace('[TRACE] getting context');
     return {
       portalContext: {
         ...this.props,
-        components: {
-          ...defaultComponents,
-          ...this.props.components,
-        },
-        style: {
-          ...defaultStyle,
-          ...this.props.style,
-        },
+        components: this.props.components,
+        style: this.props.style,
       },
     };
   },
@@ -70,10 +65,8 @@ export const InternalPortal = React.createClass({
     this.props.onChange(newState);
   },
   render() {
-    const page = this.props.portalState.findPageByPosition(this.props.page); // TODO protect
-    const style = { ...defaultStyle, ...this.props.style };
-    const components = { ...defaultComponents, ...this.props.components };
-    // TODO addSection buttons
+    const page = this.props.portalState.findPageByPosition(this.props.page);
+    const { style, components } = this.props;
     return (
       <div
         className={maybeClassName(style, 'Portal')}

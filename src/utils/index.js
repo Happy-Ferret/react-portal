@@ -55,3 +55,13 @@ export function autoBind(instance) {
   }
   return instance;
 }
+
+export function invariant(condition, message, ...args) {
+  if (!condition) {
+    let argIndex = 0;
+    const error = new Error(`${message.replace(/%s/g, () => args[argIndex++])}`);
+    error.name = 'Violation';
+    error.framesToPop = 2;
+    throw error;
+  }
+}

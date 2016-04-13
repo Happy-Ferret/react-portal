@@ -5,7 +5,7 @@ A library to create fully customizable and stylable app. portals in React or Van
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Portal, PortalState } from 'react-portal';
+import { Portal, PortalState, defaultComponents, defaultStyle } from 'react-portal';
 
 // imports from your own modules
 import { PortalStyle } from './custom/style';
@@ -27,8 +27,8 @@ class MyPortal extends React.Component {
     return (
       <Portal
         page={page} admin={admin} widgetsCatalog={WidgetsCatalog}
-        components={{ WidgetBarMoveButton, WidgetBarCloseButton }}
-        style={PortalStyle}
+        components={{ ...defaultComponents, WidgetBarMoveButton, WidgetBarCloseButton }}
+        style={{ ...defaultStyle, PortalStyle }}
         portalState={portalState}
         onChange={this.onChange} />
     );

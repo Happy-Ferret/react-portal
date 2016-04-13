@@ -2,6 +2,7 @@ import 'es6-shim';
 import 'es7-shim';
 
 export * from './api/components';
+export * from './api/style';
 
 export * from './api/components/SectionLayout';
 export * from './api/components/Section';
@@ -37,3 +38,7 @@ export * from './api/Widget';
 // TODO : third party class extends for WidgetEditComponent
 // TODO : hide buttons if no admin mode
 // TODO : hide preferences button if no admin mode and no always show prefs
+
+// TODO : lookup for style, class and inner component from context in internal components
+// TODO : thinner info icon
+// TODO : defaultComponents and defaultStyle should be extended by user from the calling component not by internal portal

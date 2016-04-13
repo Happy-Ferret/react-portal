@@ -64,6 +64,7 @@ export class PortalState {
       .deleteIn(['pages', fromPage.id, 'sections', fromSection.id, 'widgets', id]));
   }
 
+  // TODO protect
   findPageByPosition(position) {
     return PageModel.of(this.getImmutable().get('pages')
       .valueSeq()
