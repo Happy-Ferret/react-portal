@@ -18,6 +18,7 @@ export const InternalPortal = React.createClass({
   propTypes: {
     admin: PropTypes.bool,
     page: PropTypes.number,
+    noWidgetBar: PropTypes.bool,
     portalState: PropTypes.object.isRequired,
     widgetsCatalog: PropTypes.object.isRequired,
     onChange: PropTypes.func,

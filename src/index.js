@@ -37,4 +37,3 @@ export * from './api/Widget';
 // TODO : third party class extends for WidgetEditComponent
 // TODO : hide buttons if no admin mode
 // TODO : hide preferences button if no admin mode and no always show prefs
-// TODO : show bar in portal conf
