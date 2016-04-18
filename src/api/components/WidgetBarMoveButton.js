@@ -1,3 +1,5 @@
+/* eslint max-len: 0 */
+
 import React, { PropTypes } from 'react';
 
 export const WidgetBarMoveButton = React.createClass({
