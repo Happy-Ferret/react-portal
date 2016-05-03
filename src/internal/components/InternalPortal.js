@@ -115,8 +115,8 @@ export const InternalPortal = React.createClass({
           }
         </InternalSectionLayout>
         <InternalPageButtons>
-            <InternalAddSectionButton
-              addSection={this.addSection.bind(this, { id: page.id() })} />
+          <InternalAddSectionButton
+            addSection={this.addSection.bind(this, { id: page.id() })} />
         </InternalPageButtons>
       </div>
     );

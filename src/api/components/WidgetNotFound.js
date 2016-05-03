@@ -7,7 +7,7 @@ export class WidgetNotFound extends Widget {
     const { style } = this.context.portalContext;
     return (
       <div style={style.WidgetNotFound}>
-          <h3>Unable to find your widget</h3>
+        <h3>Unable to find your widget</h3>
       </div>
     );
   }

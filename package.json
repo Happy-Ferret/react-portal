@@ -5,22 +5,23 @@
   "main": "lib/main.js",
   "jsnext:main": "src/main.js",
   "scripts": {
+    "compress": "gzip --best -c ./dist/react-portal.js > ./dist/react-portal.gzip",
+    "bundle": "NODE_ENV=production webpack --colors --progress",
+    "build": "npm run test && npm run test:covtext && npm run lint && npm run lib && npm run bundle && npm run compress && ls -ahl ./dist",
+    "lib": "rm -rf ./lib && babel src --out-dir lib",
     "lint": "eslint src tests",
+    "start": "NODE_ENV=dev webpack-dev-server -d --colors --hot --inline --progress --port 8080",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register tests/index.js",
     "test:watch": "npm test -- --watch",
     "test:covtext": "rm -rf ./coverage && NODE_ENV=test babel-node $(npm bin)/isparta cover --report text $(npm bin)/_mocha -- --compilers js:babel-core/register tests/index.js",
-    "test:cov": "rm -rf ./coverage && NODE_ENV=test babel-node $(npm bin)/isparta cover --report html $(npm bin)/_mocha -- --compilers js:babel-core/register tests/index.js",
-    "start": "NODE_ENV=dev webpack-dev-server -d --colors --hot --inline --progress --port 8080",
-    "bundle": "NODE_ENV=production webpack -p --colors --progress",
-    "lib": "rm -rf ./lib && babel src --out-dir lib",
-    "build": "npm run test && npm run test:covtext && npm run lint && npm run lib && npm run bundle"
+    "test:cov": "rm -rf ./coverage && NODE_ENV=test babel-node $(npm bin)/isparta cover --report html $(npm bin)/_mocha -- --compilers js:babel-core/register tests/index.js"
   },
   "author": "Mathieu ANCELIN",
   "license": "MIT",
   "dependencies": {
     "es6-shim": "^0.35.0",
     "es7-shim": "^5.0.0",
-    "immutable": "^3.8.0"
+    "immutable": "^3.8.1"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
@@ -28,9 +29,9 @@
   },
   "devDependencies": {
     "babel": "^6.5.2",
-    "babel-cli": "^6.7.5",
-    "babel-core": "^6.7.6",
-    "babel-eslint": "^6.0.2",
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
@@ -38,15 +39,16 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "enzyme": "^2.2.0",
-    "eslint": "^2.8.0",
-    "eslint-config-airbnb": "^7.0.0",
-    "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^5.0.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-jsx-a11y": "^1.0.4",
+    "eslint-plugin-react": "^5.0.1",
     "isparta": "^4.0.0",
-    "jsdom": "^8.4.0",
+    "jsdom": "^8.5.0",
     "mocha": "^2.4.5",
-    "react-addons-test-utils": "^15.0.1",
-    "sinon": "^1.17.3",
+    "react-addons-test-utils": "^15.0.2",
+    "sinon": "^1.17.4",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   }

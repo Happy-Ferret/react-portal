@@ -15,5 +15,4 @@ export function bootstrapEnv(body = '') {
   global.document = doc;
   global.window = win;
   propagateToGlobal(win);
-  console.log('\nENV setup is done !!!');
 }

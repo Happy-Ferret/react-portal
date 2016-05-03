@@ -4,6 +4,4 @@ import { bootstrapEnv } from './bootstrap';
 
 bootstrapEnv();
 
-const tests = [
-  require('./basic.spec.js'),
-];
+require('./basic.spec.js');
