@@ -1,6 +1,3 @@
-import 'es6-shim';
-import 'es7-shim';
-
 export * from './api/components';
 export * from './api/style';
 
@@ -22,11 +19,13 @@ export * from './api/wrappers/PortalWrapper';
 export * from './api/Portal';
 export * from './api/Widget';
 
+export { extendClass } from './utils';
+
 // TODO : handle remove section
 // TODO : handle remove page
 // TODO : handle add widget
 // TODO : add resources bundles for label in portal config
-// TODO : propose 2 types of layout in the public API ???
+// TODO : propose 2 types of layout in the public API based on flexbox ???
 // TODO : add catalog popup to add widget (in a special tag in InternalPortal)
 // TODO : do we need to handle widget width/height ???
 // TODO : write readme
@@ -34,6 +33,5 @@ export * from './api/Widget';
 // TODO : function for authorization
 // TODO : pass user context to widgets ???
 // TODO : what about pluggable transition ???
-// TODO : third party class extends for WidgetEditComponent
 // TODO : hide buttons if no admin mode
 // TODO : hide preferences button if no admin mode and no always show prefs

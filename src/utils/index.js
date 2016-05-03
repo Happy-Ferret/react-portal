@@ -65,3 +65,20 @@ export function invariant(condition, message, ...args) {
     throw error;
   }
 }
+
+export function extendClass(parent, protoProps, staticProps) {
+  let child;
+  if (protoProps && hasOwnProperty.call(protoProps, 'constructor')) {
+    child = protoProps.constructor;
+  } else {
+    child = function() { // eslint-disable-line
+      return parent.apply(this, arguments); // eslint-disable-line
+    };
+  }
+  Object.assign(child, parent, staticProps);
+  child.prototype = Object.create(parent.prototype);
+  if (protoProps) Object.assign(child.prototype, protoProps);
+  child.prototype.constructor = child;
+  child.__super__ = parent.prototype;
+  return child;
+}
