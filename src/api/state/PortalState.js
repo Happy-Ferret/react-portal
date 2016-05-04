@@ -2,6 +2,47 @@ import { uuid } from '../../utils';
 import { PortalState as InternalPortalState } from '../../internal/model/PortalState';
 
 export const PortalState = {
+  page(...sections) {
+    const sectionsObj = {};
+    sections.forEach((s, i) => {
+      s.position = i; // eslint-disable-line
+      sectionsObj[s.id] = s;
+    });
+    return {
+      id: uuid(),
+      title: uuid(),
+      sections: sectionsObj,
+    };
+  },
+  section(...widgets) {
+    const widgetsObj = {};
+    widgets.forEach((w, i) => {
+      w.position = i; // eslint-disable-line
+      widgetsObj[w.id] = w;
+    });
+    return {
+      id: uuid(),
+      widgets: widgetsObj,
+    };
+  },
+  widget(widget, preferences = {}, size = { width: 4 }) {
+    return {
+      id: uuid(),
+      widget,
+      size,
+      preferences,
+    };
+  },
+  build(...pages) {
+    const pagesObj = {};
+    pages.forEach((p, i) => {
+      p.position = i; // eslint-disable-line
+      pagesObj[p.id] = p;
+    });
+    return InternalPortalState.fromJson({
+      pages: pagesObj,
+    });
+  },
   fromJson(json) {
     return InternalPortalState.fromJson(json);
   },

@@ -15,11 +15,25 @@ const WidgetsCatalog = {
 
 };
 
+const initalPortalState = PortalState.build(
+  PortalState.page(
+    PortalState.section(
+      PortalState.widget('RedditFunnyPics'),
+      PortalState.widget('Wikipedia'),
+      PortalState.widget('TodoList')
+    ),
+    PortalState.section(
+      PortalState.widget('Calculator'),
+      PortalState.widget('Google')
+    )
+  )
+);
+
 class MyPortal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      portalState: PortalState.sample(),
+      portalState: initalPortalState,
       admin: false,
       page: 0,
     };
