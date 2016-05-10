@@ -1,11 +1,14 @@
 /* eslint no-useless-constructor: 0, no-else-return: 0 */
 
 import React, { PropTypes } from 'react';
-import { autoBind } from '../utils';
+import { autoBind, extendClass } from '../utils';
 
 import { DefaultPreferenceView } from '../api/components/DefaultPreferenceView';
 
 export class Widget extends React.Component {
+  static extend(body) {
+    return extendClass(Widget, body);
+  }
   constructor(props) {
     super(props);
   }
@@ -32,6 +35,9 @@ Widget.propTypes = {
 };
 
 export class DOMWidget extends React.Component {
+  static extend(body) {
+    return extendClass(DOMWidget, body);
+  }
   constructor(props) {
     super(props);
     this.catchRefNode = this.catchRefNode.bind(this);
