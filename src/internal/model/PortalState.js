@@ -78,7 +78,9 @@ export class PortalState {
 
   pages() {
     return this.getImmutable()
-      .get('pages').valueSeq().toArray()
+      .get('pages')
+      .valueSeq()
+      .toArray()
       .map(s => PageModel.of(s));
   }
 

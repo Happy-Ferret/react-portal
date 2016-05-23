@@ -2,7 +2,6 @@
 
 import React from 'react';
 import chai, { expect } from 'chai';
-import ReactTestUtils from 'react-addons-test-utils';
 
 describe('react-portal', () => {
   it('should work', () => {

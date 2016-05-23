@@ -38,7 +38,9 @@ export class SectionModel {
 
   widgets() {
     return this.getImmutable()
-      .get('widgets').valueSeq().toArray()
+      .get('widgets')
+      .valueSeq()
+      .toArray()
       .map(s => WidgetModel.of(this._pageId, this.id(), s));
   }
 

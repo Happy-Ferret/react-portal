@@ -42,7 +42,9 @@ export class PageModel {
 
   sections() {
     return this.getImmutable()
-      .get('sections').valueSeq().toArray()
+      .get('sections')
+      .valueSeq()
+      .toArray()
       .map(s => SectionModel.of(this.id(), s));
   }
 
