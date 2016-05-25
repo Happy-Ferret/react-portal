@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 import { Portal } from '../Portal';
 import { PortalState } from '../state/PortalState';
@@ -63,7 +62,8 @@ const WrappedPortal = React.createClass({
 });
 
 export const PortalFactory = {
-  build(options) {
+  build(options, providedReactDOM) {
+    const ReactDOM = providedReactDOM || require('react-dom'); // eslint-disable-line
     const { container } = options;
     const portalChannel = eventBus();
     const api = {
