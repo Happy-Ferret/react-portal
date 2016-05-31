@@ -1,6 +1,6 @@
 # react-portal
 
-A library to create fully customizable and stylable app. portals in React or Vanilla JS, powered by an immutable model
+A library to create fully customizable and stylable web portals in React or Vanilla JS, powered by an immutable model
 
 ```javascript
 import React from 'react';
@@ -41,10 +41,10 @@ ReactDOM.render(
 );
 ```
 
-You can notice that you have the full control over the state of the Portal component, every components style and very internal components or text label of your portal instance.
+You can notice that you have the full control over the state of the Portal component, every components style and every internal UI components or text label of your portal instance.
 
 The list of overriden styles is passed through the `style` props of `<Portal />`, default style can be found [here](https://github.com/mathieuancelin/react-portal/blob/master/src/api/style/index.js)
 
 The list of overriden graphical components is passed through the `components` props of `<Portal />`, default components list can be found [here](https://github.com/mathieuancelin/react-portal/tree/master/src/api/components)
 
-*You are not obliged to use React to instanciate the Portal or to write Widgets. Vanilla JS API are also available* but you are obliged to use `React` to redefine internal components of your `<Portal />` instance
+*You are not obliged to use React to instanciate a web Portal or to write Widgets (portlets). Vanilla JS API are also available* but you are obliged to use `React` to redefine internal components of your `<Portal />` instance
