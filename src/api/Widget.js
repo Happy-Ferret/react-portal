@@ -1,4 +1,4 @@
-/* eslint no-useless-constructor: 0, no-else-return: 0 */
+/* eslint no-useless-constructor: 0, no-else-return: 0, react/self-closing-comp: 0 */
 
 import React, { PropTypes } from 'react';
 import { autoBind, extendClass } from '../utils';
